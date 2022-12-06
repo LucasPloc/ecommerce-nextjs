@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import { urlFor } from '../sanity';
-import Currency from 'react-currency-formatter';
 import { useDispatch } from 'react-redux';
 import { removeFromCart } from '../store/cartSlice';
 import toast from 'react-hot-toast';
@@ -54,10 +53,7 @@ const CheckoutProduct = ({ id, items }: Props) => {
         </div>
         <div className='flex flex-col items-end space-y-4'>
           <h4 className='fonts-semibold text-xl lg:text-2xl'>
-            <Currency
-              quantity={items.reduce((total, item) => total + item.price, 0)}
-              currency='USD'
-            />
+            {items.reduce((total, item) => total + item.price, 0)} USD
           </h4>
           <button
             onClick={removeItemFromCart}

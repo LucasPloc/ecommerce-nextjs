@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Header, CheckoutProduct } from '../components';
 import { selectCartItems, selectCartTotal } from '../store/cartSlice';
-import Currency from 'react-currency-formatter';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import Stripe from 'stripe';
 import { fetchPostJSON } from '../utils/apiHelpers';
@@ -97,9 +96,7 @@ const Checkout = () => {
                 <div className='pb-4'>
                   <div className='flex justify-between'>
                     <p>Subtotal</p>
-                    <p>
-                      <Currency quantity={cartTotal} currency='USD' />
-                    </p>
+                    <p>{cartTotal} USD</p>
                   </div>
                   <div className='flex justify-between'>
                     <p>Shipping</p>
@@ -124,10 +121,7 @@ const Checkout = () => {
                 font-semibold'
                 >
                   <h4>Total</h4>
-                  <h4>
-                    {' '}
-                    <Currency quantity={cartTotal} currency='USD' />
-                  </h4>
+                  <h4> {cartTotal} USD</h4>
                 </div>
               </div>
               <div className='my-14 space-y-4'>
@@ -161,10 +155,7 @@ const Checkout = () => {
                   >
                     <h4 className='mb-4 flex flex-col text-xl font-semibold'>
                       Pay in full
-                      <span>
-                        {' '}
-                        <Currency quantity={cartTotal} currency='USD' />
-                      </span>
+                      <span> {cartTotal} USD</span>
                     </h4>
                     <Button
                       noIcon
